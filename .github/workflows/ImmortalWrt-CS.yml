@@ -1,13 +1,8 @@
-name:  ImmortalWrt-CS
+name:  ImmortalWrt
 
 on:
   repository_dispatch:
   workflow_dispatch:
-    inputs:
-      ssh:
-        description: 'SSH connection to Actions'
-        required: true
-        default: 'true'
 
 env:
   REPO_URL: https://github.com/immortalwrt/immortalwrt
@@ -160,7 +155,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_TIME }} -OK2主路由
+        name: ${{ env.FILE_TIME }} -ImmortalWrt
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
