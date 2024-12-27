@@ -5,12 +5,6 @@
 # 2-添加 OpenClash 插件
 sed -i '$a\src-git openclash https://github.com/vernesong/OpenClash' ./feeds.conf.default
 # 3-添加 PassWall 插件
-# echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >> "feeds.conf.default"
-# echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main" >> "feeds.conf.default"
-# echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
-
-
-
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/luci-app-passwall2
-git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall_packages
+echo "src-git passwall https://github.com/xiaorouji/openwrt-passwall.git;main" >> "feeds.conf.default"
+echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main" >> "feeds.conf.default"
+echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
