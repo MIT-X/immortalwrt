@@ -78,7 +78,9 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: 更新外部插件
-      run: cd openwrt && ./scripts/feeds update -a
+      run: |
+      cd openwrt
+      ./scripts/feeds update -a
       rm -rf feeds/luci/applications/luci-app-upnp
       git clone https://github.com/WukongMaster/luci-app-upnp feeds/luci/applications/luci-app-upnp
 
