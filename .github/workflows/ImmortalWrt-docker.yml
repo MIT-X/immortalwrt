@@ -24,7 +24,7 @@ jobs:
     - name: 检查项目分支
       uses: actions/checkout@main
 
-    - name: 清理磁盘空间
+#    - name: 清理磁盘空间
       uses: jlumbroso/free-disk-space@main
       with:
         tool-cache: true        
@@ -81,7 +81,7 @@ jobs:
       run: |
        cd openwrt
        ./scripts/feeds update -a
-       rm -rf feeds/packages/net/miniupnpd && svn co https://github.com/immortalwrt/packages/branches/openwrt-18.06/net/miniupnpd feeds/packages/net/miniupnpd
+       rm -rf feeds/packages/net/miniupnpd && git clone -b openwrt-18.06 --single-branch https://github.com/immortalwrt/packages/net/miniupnpd feeds/packages/net/miniupnpd
 
     - name: 安装外部插件
       run: cd openwrt && ./scripts/feeds install -a
