@@ -71,7 +71,7 @@ jobs:
       run: |
        cd openwrt
        ./scripts/feeds update -a
-       rm -rf feeds/packages/net/miniupnpd && git clone -b openwrt-18.06 --single-branch https://github.com/immortalwrt/packages/net/miniupnpd feeds/packages/net/miniupnpd
+       rm -rf feeds/packages/net/miniupnpd && git clone https://github.com/MIT-X/miniupnpd feeds/packages/net/miniupnpd
 
     - name: 安装外部插件
       run: cd openwrt && ./scripts/feeds install -a
