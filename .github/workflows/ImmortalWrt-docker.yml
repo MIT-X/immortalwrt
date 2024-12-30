@@ -81,8 +81,7 @@ jobs:
       run: |
        cd openwrt
        ./scripts/feeds update -a
-       rm -rf feeds/luci/applications/luci-app-upnp
-       git clone https://github.com/WukongMaster/luci-app-upnp feeds/luci/applications/luci-app-upnp
+       rm -rf feeds/packages/net/miniupnpd && svn co https://github.com/immortalwrt/packages/branches/openwrt-18.06/net/miniupnpd feeds/packages/net/miniupnpd
 
     - name: 安装外部插件
       run: cd openwrt && ./scripts/feeds install -a
