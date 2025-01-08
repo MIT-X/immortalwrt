@@ -9,6 +9,7 @@ env:
   REPO_BRANCH: openwrt-24.10
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: docker.config
+  PATCHES_FILE: miniupnp.patch
   DIY_P1_SH: DIY-1.sh
   DIY_P2_SH: DIY-2.sh
   UPLOAD_FIRMWARE: true
@@ -81,10 +82,15 @@ jobs:
       run: |
        cd openwrt
        ./scripts/feeds update -a
-       rm -rf feeds/packages/net/miniupnpd && git clone https://github.com/MIT-X/miniupnpd feeds/packages/net/miniupnpd
+       ./scripts/feeds install -a
 
-    - name: 安装外部插件
-      run: cd openwrt && ./scripts/feeds install -a
+    - name: 安装upnp补丁  
+      run: |
+        git config --global user.name "OpenWrt Builder"
+        git config --global user.email "buster-openwrt@ovvo.uk"
+        cp $PATCHES_FILE $OPENWRT_PATH/feeds/luci
+        cd $OPENWRT_PATH/feeds/luci
+        git am miniupnp.patch
 
     - name: 加载个人设置
       run: |
